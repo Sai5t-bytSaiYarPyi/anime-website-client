@@ -1,3 +1,4 @@
+// client/src/pages/AnimeList.jsx
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import AnimeCard from '../components/AnimeCard';
@@ -7,7 +8,7 @@ function AnimeList() {
 
   useEffect(() => {
     axios
-      .get('http://localhost:5000/api/anime')
+      .get(`${process.env.REACT_APP_API_URL}/api/anime`)
       .then(res => setAnimeList(res.data))
       .catch(err => console.error('Error fetching anime:', err));
   }, []);

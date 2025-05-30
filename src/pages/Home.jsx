@@ -1,3 +1,4 @@
+// client/src/pages/Home.jsx
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import AnimeCard from '../components/AnimeCard';
@@ -6,9 +7,9 @@ function Home() {
   const [animeList, setAnimeList] = useState([]);
 
   useEffect(() => {
-    // Fetch anime from backend
+    // Fetch anime from backend using environment variable for API URL
     axios
-      .get('http://localhost:5000/api/anime')
+      .get(`${process.env.REACT_APP_API_URL}/api/anime`)
       .then(res => setAnimeList(res.data))
       .catch(err => console.error('Error fetching anime:', err));
   }, []);
